@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App24;assembly=App24"
+             x:Class="App24.MainPage">
+<StackLayout Orientation="Vertical">
+  <StackLayout.BindingContext>
+    <local:MainControl/>
+  </StackLayout.BindingContext>
+  <Button Text="実行" Command="{Binding GameCommand}" CommandParameter="{Binding Source={x:Reference entry}}" FontSize="20" BackgroundColor="#113688" TextColor="#fff">
+    <Button.FontFamily>
+      <OnPlatform x:TypeArguments="x:String">
+        <OnPlatform.Android>Fonts/OradanoGSRR.ttf#OradanoGSRR</OnPlatform.Android>
+      </OnPlatform>
+    </Button.FontFamily>
+  </Button>
+  <Entry Text="{Binding TextNumber}" Keyboard="Numeric" x:Name="entry" FontSize="32">
+    <Entry.FontFamily>
+      <OnPlatform x:TypeArguments="x:String">
+        <OnPlatform.Android>Fonts/Audiowide-Regular.ttf#Audiowide-Regular</OnPlatform.Android>
+      </OnPlatform>
+    </Entry.FontFamily>
+    <Entry.Behaviors>
+      <local:MaxLengthBehavior MaxLength="3"/>
+      <local:RegexBehavior RegexPattern="^[1-9]+$"/>
+      <local:DuplicationCheckBehavior Check="true"/>
+    </Entry.Behaviors>
+  </Entry>
+  <Label Text="{Binding TextLog}" BackgroundColor="#E74231" VerticalOptions="FillAndExpand" HorizontalTextAlignment = "Center" FontSize="18">
+    <Label.FontFamily>
+      <OnPlatform x:TypeArguments="x:String">
+        <OnPlatform.Android>Fonts/OradanoGSRR.ttf#OradanoGSRR</OnPlatform.Android>
+      </OnPlatform>
+    </Label.FontFamily>
+  </Label>
+</StackLayout>
+</ContentPage>
